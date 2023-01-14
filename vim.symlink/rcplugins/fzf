@@ -10,7 +10,9 @@ else
 endif
 
 let g:fzf_launcher = "in_a_new_term_function_fzf %s"
-let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore .git'
+" let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden --ignore .git'
+" let $FZF_DEFAULT_COMMAND = 'rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/,.git/}"'
+let $FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*,**/vendor/*,**/coverage/*,**/tmp/*,**/doc/*}'"
 let $FZF_DEFAULT_OPTS = '--reverse --multi'
 
 

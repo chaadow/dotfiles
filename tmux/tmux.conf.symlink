@@ -1,4 +1,5 @@
 # Replace C-b with C-s for the prefix key
+
 unbind C-b
 set -g prefix C-s
 bind-key -r C-s send-prefix
@@ -58,17 +59,21 @@ set -g status-interval 5
 bind-key - split-window -v  -c '#{pane_current_path}'
 bind-key '\' split-window -h  -c '#{pane_current_path}'
 bind c new-window -c '#{pane_current_path}'
+
+# Easily open dotfiles
 bind C-d popup -d "~/.dotfiles/" -xC -yC -w80% -h80% -E "vim +Files"
+
+bind o run-shell "open '#{pane_current_path}'"
 
 # Easy resizing of panes with fine and coarse adjustment
 bind -n S-Left resize-pane -L 2
 bind -n S-Right resize-pane -R 2
 bind -n S-Down resize-pane -D 1
 bind -n S-Up resize-pane -U 1
-bind -n C-Left resize-pane -L 10
-bind -n C-Right resize-pane -R 10
-bind -n C-Down resize-pane -D 5
-bind -n C-Up resize-pane -U 5
+bind -n C-S-Left resize-pane -L 10
+bind -n C-S-Right resize-pane -R 10
+bind -n C-S-Down resize-pane -D 5
+bind -n C-S-Up resize-pane -U 5
 
 # Number windows starting at 1, renumber as windows are added / removed
 set-option -g base-index 1
@@ -83,6 +88,7 @@ bind-key Space switch-client -l
 
 # Enable focus events (For vim to be able to intercept the FocusGained autocmd)
 set -g focus-events on
+
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
 
@@ -97,9 +103,12 @@ unbind -T copy-mode-vi Space
 bind -T copy-mode-vi Space send -X jump-again
 bind-key -T copy-mode-vi 0 send -X back-to-indentation
 
+bind y run 'tmux save-buffer - | pbcopy '
+bind C-y run 'tmux save-buffer - | pbcopy '
+
 # Sample quick-pane configurations
 bind-key h split-window -h "htop"
-bind-key t split-window -h -c ~/ "vim todo.md"
+bind-key t run-shell "tmux-popup 'vim todo.md'"
 bind-key w split-window -h "vim +FZF"
 
 # Prompted join-pane
@@ -115,9 +124,12 @@ bind-key b break-pane -d
 bind-key ! run-shell '(tmux switch-client -l || tmux switch-client -n) && tmux kill-session -t "#S" || tmux kill-session'
 
 # Create a new session from fuzzy project list
-bind-key C-t run-shell "tmux-popup 'tmux-open-session'"
+bind-key C-t run-shell "tmux-popup 'tmux-open-session' 100"
 # Fuzzy matching session navigation via fzf utility
-bind-key C-j run-shell "tmux-popup 'tmux-switch-session'"
+bind-key C-j run-shell "tmux-popup 'tmux-switch-session' 100"
+
+# Creates a popup
+bind-key p run-shell "tmux-popup"
 
 # Keep plenty of history for scrollback
 set -g history-limit 10000

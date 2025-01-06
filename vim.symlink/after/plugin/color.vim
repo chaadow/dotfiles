@@ -49,15 +49,15 @@ if v:progname !=# 'vi'
       autocmd FocusGained * :call s:CheckColorScheme()
       " if has('gui_running')
       "   "For MacVim because it doesn't want to set oceanicnext at vim startup.
-      "   autocmd VimEnter * call s:CheckColorScheme()
+      autocmd VimEnter * call s:CheckColorScheme()
       " endif
     augroup END
   endif
-  if !($TMUX != '')
+  " if !($TMUX != '')
     " This is more performant than calling directly CheckColorScheme.
     " 100ms less
-    doautocmd FocusGained
-  endif
- " call s:CheckColorScheme()
+    " doautocmd FocusGained
+  " endif
+"  call s:CheckColorScheme()
 
 endif

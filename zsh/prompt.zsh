@@ -44,7 +44,7 @@ prompt_git_info() {
       esac
       if [ -n "$__CURRENT_GIT_BRANCH_IS_DIRTY" ]; then
           # s+="⚡"
-          s+="⚡️ "
+          s+="⚡️"
       fi
       s+=")"
 
@@ -136,7 +136,7 @@ battery_status() {
 
 # PROMPT=$'\n$(rb_prompt)in %{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%}$(need_push)\n› '
 # PROMPT=$'\n$(battery_status)$(rb_prompt)in %{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%}$(need_push)\n› '
-PROMPT=$'\n$(battery_status)$(rb_prompt)in $(directory_name)$(prompt_git_info)$(need_push)\n› '
+PROMPT=$'\n$()$(rb_prompt)in $(directory_name)$(prompt_git_info)$(need_push)\n› '
 # PROMPT=$'%{${fg[cyan]}%}%B%~%b $(git_dirty)%{${fg[default]}%} '
 # SPROMPT="zsh: correct %F{red}'%R'%f to %F{red}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
 SPROMPT="zsh: correct %{${fg_bold[red]}%}'%R'%f to %F{red}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "

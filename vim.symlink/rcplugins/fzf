@@ -3,13 +3,16 @@
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" let g:fzf_layout = { 'window': { 'width': 1, 'height': 1 } }
 if exists('$TMUX')
-  let g:fzf_layout = { 'tmux': '-p90%,90%' }
+  " let g:fzf_layout = { 'tmux': '-xC -yC -w90% -h90%' }
+  let g:fzf_layout = { 'tmux': '100%,100%' }
+  " let g:fzf_layout = { 'window': { 'width': 1, 'height': 1 } }
 else
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 endif
 
-let g:fzf_launcher = "in_a_new_term_function_fzf %s"
+" let g:fzf_launcher = "in_a_new_term_function_fzf %s"
 " let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden --ignore .git'
 " let $FZF_DEFAULT_COMMAND = 'rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/,.git/}"'
 let $FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden -g '!{**/node_modules/*,**/.git/*,**/vendor/*,**/coverage/*,**/tmp/*,**/doc/*}'"
@@ -36,6 +39,7 @@ let g:fzf_tags_command = 'ctags -R'
 nnoremap <silent> <Leader>C        :Colors<CR>
 nnoremap <silent> <Leader><Enter>  :Buffers<CR>
 nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>rg       :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
 xnoremap <silent> <Leader>ag       y:Ag <C-R>"<CR>
 nnoremap <silent> <Leader>`        :Marks<CR>`

@@ -3,10 +3,10 @@
 if [[ -x "$(which rbenv)" ]]
 then
   echo
-  echo "Installing Ruby tools and Ruby 2.6.5"
+  echo "Installing Ruby tools and Ruby 3.4"
   eval "$(rbenv init -)"
-  rbenv install 2.6.5 --skip-existing
-  rbenv global 2.6.5
+  rbenv install 3.4.1 --skip-existing
+  rbenv global 3.4.1
   gem install bundler
 
   # this is for using vim in irb.

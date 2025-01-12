@@ -26,7 +26,7 @@ brew "libgit2"
 brew "mas"
 brew "nvm"
 # brew "openssl@1.1"
-brew "postgresql", restart_service: true
+brew "postgresql@16", restart_service: true
 # brew "python"
 brew "ruby-build"
 brew "rbenv"
@@ -58,12 +58,14 @@ cask "android-studio"
 cask "dash"
 cask "discord"
 cask "docker"
+cask "dropbox"
 # cask "evernote"
 # cask "firefox"
 cask "slack"
 # cask "spectacle"
 # cask "tunnelblick"
 cask "vlc"
+cask "cursor"
 
 # MacOs Apps that are not listed in casks
 
